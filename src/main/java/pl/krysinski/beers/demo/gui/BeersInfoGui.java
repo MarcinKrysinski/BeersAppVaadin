@@ -24,7 +24,7 @@ public class BeersInfoGui extends HorizontalLayout {
     public void getBeers(){
         Grid<BeersInfo> grid = new Grid<>(BeersInfo.class);
 
-        grid.setItems(beerController.getBeersInfo());
+//        grid.setItems(beerController.getBeersInfo());
 
 
         grid.setColumns("id", "name", "description", "ibu", "firstBrewed", "imageUrl");
