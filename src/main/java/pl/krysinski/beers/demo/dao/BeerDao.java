@@ -7,6 +7,6 @@ import java.util.List;
 public interface BeerDao {
 
     List<BeersInfo> getBeers();
-    void editBeer(BeersInfo beer);
+    void editBeer(BeersInfo newBeer);
     void addBeerToDb();
 }

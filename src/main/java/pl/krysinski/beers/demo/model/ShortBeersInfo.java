@@ -5,8 +5,20 @@ public class ShortBeersInfo {
    private String name;
    private String firstBrewed;
    private String description;
-   private Integer ibu;
+   private String ibu;
    private String imageUrl;
+
+    public ShortBeersInfo(Integer id, String name, String firstBrewed, String description, String ibu, String imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.firstBrewed = firstBrewed;
+        this.description = description;
+        this.ibu = ibu;
+        this.imageUrl = imageUrl;
+    }
+
+    public ShortBeersInfo() {
+    }
 
     public Integer getId() {
         return id;
@@ -40,11 +52,11 @@ public class ShortBeersInfo {
         this.description = description;
     }
 
-    public Integer getIbu() {
+    public String getIbu() {
         return ibu;
     }
 
-    public void setIbu(Integer ibu) {
+    public void setIbu(String ibu) {
         this.ibu = ibu;
     }
 

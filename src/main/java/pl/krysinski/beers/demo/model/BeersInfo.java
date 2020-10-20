@@ -302,4 +302,16 @@ public class BeersInfo {
 //        this.additionalProperties.put(name, value);
 //    }
 
+
+    @Override
+    public String toString() {
+        return "BeersInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", firstBrewed='" + firstBrewed + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", ibu=" + ibu +
+                '}';
+    }
 }

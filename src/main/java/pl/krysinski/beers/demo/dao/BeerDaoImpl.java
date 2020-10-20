@@ -5,9 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import pl.krysinski.beers.demo.model.BeersInfo;
+import pl.krysinski.beers.demo.model.ShortBeersInfo;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -27,11 +27,25 @@ public class BeerDaoImpl implements BeerDao{
 
     @Override
     public List<BeersInfo> getBeers() {
-        return null;
+        String sql = "SELECT * FROM beers";
+        List<ShortBeersInfo> beerList =new ArrayList<>();
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
+        maps.stream().forEach(element ->
+                beerList.add(new ShortBeersInfo(
+                Integer.parseInt(String.valueOf(element.get("id"))),
+                String.valueOf(element.get("name")),
+                String.valueOf(element.get("firstBrewed")),
+                String.valueOf(element.get("description")),
+                String.valueOf(element.get("ibu")),
+                String.valueOf(element.get("imageUrl"))
+        )));
+        return beersList;
     }
 
     @Override
-    public void editBeer(BeersInfo beer) {
+    public void editBeer(BeersInfo newBeer) {
+        String sql = "UPDATE beers SET beers.name=?, beers.firstBrewed=?, beers.description=?, beers.imageUrl=?, beers.ibu=? WHERE id=?";
+        jdbcTemplate.update(sql, newBeer.getName(), newBeer.getFirstBrewed(), newBeer.getDescription(), newBeer.getImageUrl(), newBeer.getIbu(), newBeer.getId());
 
     }
 
